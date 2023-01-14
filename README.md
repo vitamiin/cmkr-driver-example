@@ -2,7 +2,7 @@
 An example project for a Windows kernel driver built with cmkr
 
 ### Building
-Make sure that in `cmake.toml`, under [project], you place your own values for the cert name, the company name, etc.
+Make sure that in `cmake.toml`, under [variables], you place your own values for the cert name, the company name, etc.
 
 Create a build/ folder, then:
 ```bash

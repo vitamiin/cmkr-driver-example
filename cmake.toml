@@ -2,11 +2,12 @@
 name = "cmkr-driver-example"
 cmake-before = """
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/external/FindWDK/cmake)
-# Insert your own values
-set(CERT_NAME "DrvCert")
-set(TIMESTAMP_SERVER "http://timestamp.digicert.com")
-set(COMPANY_NAME "CompanyName")
 """
+
+[variables]
+CERT_NAME = "DrvCert"
+TIMESTAMP_SERVER = "http://timestamp.digicert.com"
+COMPANY_NAME = "CompanyName"
 
 [template.windows-kernel-driver]
 type = "shared"

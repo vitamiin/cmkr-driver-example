@@ -24,11 +24,12 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 	configure_file(cmake.toml cmake.toml COPYONLY)
 endif()
 
-list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/external/FindWDK/cmake)
-# Insert your own values
-set(CERT_NAME "DrvCert")
+# Variables
+set(CERT_NAME DrvCert)
 set(TIMESTAMP_SERVER "http://timestamp.digicert.com")
-set(COMPANY_NAME "CompanyName")
+set(COMPANY_NAME CompanyName)
+
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/external/FindWDK/cmake)
 
 project(cmkr-driver-example)
 
