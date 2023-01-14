@@ -1,4 +1,5 @@
 #include <ntddk.h>
+#include "kstd.hpp"
 
 void unload_routine(PDRIVER_OBJECT driver_object) {
     UNREFERENCED_PARAMETER(driver_object);
