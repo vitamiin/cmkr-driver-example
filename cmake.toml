@@ -3,7 +3,6 @@ name = "cmkr-driver-example"
 cmake-before = """
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/external/FindWDK/cmake)
 # Insert your own values
-set(TARGET_NAME "cmkr-driver-example")
 set(CERT_NAME "DrvCert")
 set(TIMESTAMP_SERVER "http://timestamp.digicert.com")
 set(COMPANY_NAME "CompanyName")
@@ -11,15 +10,15 @@ set(COMPANY_NAME "CompanyName")
 
 [template.windows-kernel-driver]
 type = "shared"
+compile-features = ["cxx_std_17"]
 add-function = "wdk_add_driver"
 pass-sources-to-add-function = true
 cmake-after = """
-wdk_make_certificate(${TARGET_NAME} ${CERT_NAME} COMPANY ${COMPANY_NAME})
-wdk_sign_driver(${TARGET_NAME} ${CERT_NAME} TIMESTAMP_SERVER ${TIMESTAMP_SERVER})
+wdk_make_certificate(${CMKR_TARGET} ${CERT_NAME} COMPANY ${COMPANY_NAME})
+wdk_sign_driver(${CMKR_TARGET} ${CERT_NAME} TIMESTAMP_SERVER ${TIMESTAMP_SERVER})
 """
 
 [template.windows-kernel-driver.properties]
-CXX_STANDARD = "17"
 CXX_STANDARD_REQUIRED = true
 
 [target.cmkr-driver-example]

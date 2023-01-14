@@ -26,7 +26,6 @@ endif()
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/external/FindWDK/cmake)
 # Insert your own values
-set(TARGET_NAME "cmkr-driver-example")
 set(CERT_NAME "DrvCert")
 set(TIMESTAMP_SERVER "http://timestamp.digicert.com")
 set(COMPANY_NAME "CompanyName")
@@ -45,18 +44,20 @@ set(cmkr-driver-example_SOURCES
 wdk_add_driver(cmkr-driver-example ${cmkr-driver-example_SOURCES})
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${cmkr-driver-example_SOURCES})
 
+target_compile_features(cmkr-driver-example PUBLIC
+	cxx_std_17
+)
+
 target_include_directories(cmkr-driver-example PUBLIC
 	include
 )
 
 set_target_properties(cmkr-driver-example PROPERTIES
-	CXX_STANDARD
-		17
 	CXX_STANDARD_REQUIRED
 		ON
 )
 
 set(CMKR_TARGET cmkr-driver-example)
-wdk_make_certificate(${TARGET_NAME} ${CERT_NAME} COMPANY ${COMPANY_NAME})
-wdk_sign_driver(${TARGET_NAME} ${CERT_NAME} TIMESTAMP_SERVER ${TIMESTAMP_SERVER})
+wdk_make_certificate(${CMKR_TARGET} ${CERT_NAME} COMPANY ${COMPANY_NAME})
+wdk_sign_driver(${CMKR_TARGET} ${CERT_NAME} TIMESTAMP_SERVER ${TIMESTAMP_SERVER})
 
