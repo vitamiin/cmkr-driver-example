@@ -6,7 +6,7 @@ Make sure that in `cmake.toml`, under [project], you place your own values for t
 
 Create a build/ folder, then:
 ```bash
-cmake -B build
+cmake -B build -G "Visual Studio 17 2022"
 cmake --build build --config Debug
 ```
 (Of course, the config is for your choosing)
