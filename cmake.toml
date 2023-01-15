@@ -19,13 +19,9 @@ wdk_make_certificate(${CMKR_TARGET} ${CERT_NAME} COMPANY ${COMPANY_NAME})
 wdk_sign_driver(${CMKR_TARGET} ${CERT_NAME} TIMESTAMP_SERVER ${TIMESTAMP_SERVER})
 """
 
-[template.windows-kernel-driver.properties]
-CXX_STANDARD_REQUIRED = true
-
 [target.cmkr-driver-example]
 type = "windows-kernel-driver"
 sources = ["src/*.cpp"]
 include-directories = ["include"]
 
 [find-package.WDK]
-required = true

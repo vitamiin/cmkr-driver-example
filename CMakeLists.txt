@@ -53,11 +53,6 @@ target_include_directories(cmkr-driver-example PUBLIC
 	include
 )
 
-set_target_properties(cmkr-driver-example PROPERTIES
-	CXX_STANDARD_REQUIRED
-		ON
-)
-
 set(CMKR_TARGET cmkr-driver-example)
 wdk_make_certificate(${CMKR_TARGET} ${CERT_NAME} COMPANY ${COMPANY_NAME})
 wdk_sign_driver(${CMKR_TARGET} ${CERT_NAME} TIMESTAMP_SERVER ${TIMESTAMP_SERVER})
